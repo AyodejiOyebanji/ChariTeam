@@ -1,0 +1,19 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-confirm-email',
+  templateUrl: './confirm-email.component.html',
+  styleUrls: ['./confirm-email.component.css']
+})
+export class ConfirmEmailComponent implements OnInit {
+
+  constructor(private router:Router) { }
+
+  ngOnInit(): void {
+  }
+  next(){
+    this.router.navigate(['/signup/user_info'])
+  }
+
+}
