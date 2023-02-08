@@ -1,0 +1,239 @@
+<div class="container-fluid">
+  <img src="../../assets/carousel-2.jpg" alt="Image" class="overlay_Image" />
+  <div class="overlay">
+    <h1 class="fw-bold text-primary m-4">
+      Chari<span class="text-white">Team</span>
+    </h1>
+    <div class="row">
+      <div class="col-sm-11 col-md-10 col-lg-4 signupDiv mx-auto rounded">
+        <h3 class="signUpText p-3">Sign Up</h3>
+
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+          <div class="d-flex justify-content-center">
+            <div class="form">
+              <input
+                type="text"
+                name="text"
+                autocomplete="off"
+                required
+                formControlName="firstname"
+                name="firstname"
+                [class.isvalid]="
+                  signUpForm.get('firstname')?.valid &&
+                  signUpForm.get('firstname')?.dirty
+                "
+                [class.is-invalid]="
+                  signUpForm.get('firstname')?.invalid &&
+                  signUpForm.get('firstname')?.dirty
+                "
+              />
+
+              <label for="text" class="label-name">
+                <span class="content-name text-light"> First Name </span>
+              </label>
+            </div>
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              signUpForm.get('firstname')?.invalid &&
+              signUpForm.get('firstname')?.dirty
+            "
+          >
+            <small
+              *ngIf=" signUpForm.get('firstname')?.errors?.['minlength']"
+              class="text-danger"
+              >Your Name must be at least two characters</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="signUpForm.get('firstname')?.errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <div class="form">
+              <input
+                type="text"
+                autocomplete="off"
+                required
+                formControlName="lastname"
+                name="lastname"
+                [class.isvalid]="
+                  signUpForm.get('lastname')?.valid &&
+                  signUpForm.get('lastname')?.dirty
+                "
+                [class.is-invalid]="
+                  signUpForm.get('lastname')?.invalid &&
+                  signUpForm.get('lastname')?.dirty
+                "
+              />
+              <label for="text" class="label-name">
+                <span class="content-name text-light"> Last Name </span>
+              </label>
+            </div>
+          </div>
+          <div
+            class="text-danger text-center"
+            *ngIf="
+              signUpForm.get('lastname')?.invalid &&
+              signUpForm.get('lastname')?.dirty
+            "
+          >
+            <small
+              *ngIf=" signUpForm.get('lastname')?.errors?.['minlength']"
+              class="test-danger"
+              >Your Name must be at least two characters</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="signUpForm.get('lastname')?.errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <div class="form">
+              <input
+                type="email"
+                name="email"
+                autocomplete="off"
+                required
+                formControlName="email"
+                [class.isvalid]="
+                  signUpForm.get('email')?.valid &&
+                  signUpForm.get('email')?.touched
+                "
+                [class.is-invalid]="
+                  signUpForm.get('email')?.invalid &&
+                  signUpForm.get('email')?.dirty
+                "
+              />
+              <label for="text" class="label-name">
+                <span class="content-name text-light"> Email </span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            *ngIf="
+              signUpForm.get('email')?.invalid && signUpForm.get('email')?.dirty
+            "
+            class="text-center"
+          >
+            <small
+              class="text-danger"
+              *ngIf=" signUpForm.get('email')?.errors?.['email']"
+              >Input a valid email</small
+            >
+
+            <small
+              class="text-danger"
+              *ngIf="signUpForm.get('email')?.errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <div class="form">
+              <input type="number" formControlName="contact" name="contact" />
+              <label for="text" class="label-name">
+                <span class="content-name text-light"> Contact </span>
+              </label>
+            </div>
+          </div>
+
+          <div
+            *ngIf="
+              signUpForm.get('contact')?.invalid &&
+              signUpForm.get('contact')?.dirty
+            "
+            class="text-center"
+          >
+            <small
+              class="text-danger"
+              *ngIf=" signUpForm.get('contact')?.errors?.['minlength']"
+              >Please enter a valid phonenumber</small
+            >
+
+            <small
+              class="text-danger"
+              *ngIf=" signUpForm.get('contact')?.errors?.['required']"
+              >This field is required</small
+            >
+          </div>
+
+          <div class="d-flex justify-content-center">
+            <div class="form mt-3">
+              <select class="form-control" formControlName="country">
+                <option value="">Select a country</option>
+                <option
+                  *ngFor="let country of countries"
+                  [value]="country.code"
+                >
+                  {{ country.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="form mt-1">
+              <select
+                name=""
+                id=""
+                class="form-control"
+                formControlName="healthExpert"
+              >
+                <option value="">Are you a Health Expart</option>
+                <option value="expert">Yes</option>
+                <option value="non_expert">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <label
+              ><input
+                type="radio"
+                value="Male"
+                formControlName="gender"
+                name="gender"
+            /></label>
+
+            <span class="text-light">Male</span>
+            <label>
+              <input
+                type="radio"
+                value="Female"
+                class="ms-3"
+                formControlName="gender"
+                name="gender"
+            /></label>
+
+            <span class="text-light">Female</span>
+          </div>
+
+          <div class="d-flex justify-content-end m-5">
+            <button type="submit" mat-raised-button>Sign in</button>
+          </div>
+        </form>
+        <div class="d-flex justify-content-center">
+          <span class="text-light"
+            >Already have an account?
+            <span [routerLink]="['/signin']" class="text-primary">Sign In</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Spinner Start -->
+
+<div
+  id="spinner"
+  class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center"
+  *ngIf="loader"
+>
+  <div class="spinner-grow text-primary" role="status"></div>
+</div>
+<!-- Spinner End -->
